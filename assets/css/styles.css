@@ -7,12 +7,17 @@
 
 /* VARIÁVEIS DE CORES */
 :root {
-  --primary-red: #f63b2d;   /* Vermelho principal */
-  --dark-red: #d73228;      /* Vermelho para hover */
-  --text-color: #333;       /* Cor padrão do texto */
+  --primary-red: #f63b2d;
+  --dark-red: #d73228;
+  --text-color: #333;
   --gray-bg: #f7f7f7;
   --white: #fff;
 }
+
+/* IMPORTAÇÃO DA FONTE */
+/* Certifique-se de incluir no <head>:
+   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+*/
 
 /* SCROLL SNAP E CONFIGURAÇÕES GLOBAIS */
 html, body {
@@ -36,10 +41,11 @@ html, body {
   justify-content: center;
 }
 
+/* Seção da calculadora: 90vh com padding-top para evitar sobreposição */
 .calculator-page {
   height: 90vh;
   background: var(--gray-bg);
-  padding: 20px 0;
+  padding: 90px 0 20px;  /* 90px no topo para compensar o header */
 }
 
 /* CONTAINER PADRÃO */
@@ -62,7 +68,7 @@ html, body {
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Logo à esquerda e header-right à direita */
+  justify-content: space-between; /* Logo à esquerda; header-right à direita */
   height: 70px;
   padding: 0 20px;
 }
@@ -76,7 +82,7 @@ html, body {
   object-fit: contain;
 }
 
-/* HEADER-RIGHT: Agrupa menu e botão CTA */
+/* HEADER-RIGHT: agrupa menu e botão CTA */
 .header-right {
   display: flex;
   align-items: center;
@@ -84,8 +90,6 @@ html, body {
 }
 
 /* MENU DE NAVEGAÇÃO (DESKTOP) */
-/* O menu ocupará todo o espaço entre a logo e o botão CTA,
-   mas se posiciona à direita */
 .nav-menu {
   flex: 1;
   text-align: center;
@@ -95,7 +99,7 @@ html, body {
   gap: 20px;
   list-style: none;
   align-items: center;
-  justify-content: flex-end; /* Alinha os itens para a direita */
+  justify-content: flex-end;
 }
 .nav-menu ul li a {
   text-decoration: none;
@@ -112,7 +116,7 @@ html, body {
   font-weight: 600;
 }
 
-/* BOTÃO CTA DO HEADER */
+/* BOTÃO CTA */
 .btn-cta {
   flex: 0 0 auto;
   text-decoration: none;
@@ -129,12 +133,8 @@ html, body {
   background-color: var(--dark-red);
 }
 
-/* MENU MOBILE - Por padrão, o menu de navegação no desktop é utilizado.
-   Quando o mobile é ativado, usamos a classe "open" para o menu.
-   Aqui, ocultamos o menu (desktop) no mobile e definimos seu estilo para exibição vertical. */
-.nav-menu {
-  /* O menu desktop está visível por padrão (flex) */
-}
+/* MENU MOBILE - por padrão, o menu desktop é utilizado.
+   No mobile, o menu (com id "nav-menu") será alternado com a classe "open" */
 .nav-menu.open {
   display: block !important;
   position: absolute;
@@ -171,19 +171,16 @@ html, body {
 /* RESPONSIVIDADE DO HEADER (MOBILE) */
 @media (max-width: 768px) {
   .header-content {
-    justify-content: space-between;
     position: relative;
+    justify-content: space-between;
   }
-  /* Oculta o menu desktop */
   .nav-menu {
     display: none;
   }
-  /* Exibe o hamburger */
   .hamburger {
     display: block !important;
     order: 2;
   }
-  /* Botão CTA centralizado e menor */
   .btn-cta {
     position: absolute;
     left: 50%;
@@ -191,7 +188,7 @@ html, body {
     padding: 8px 20px;
     font-size: 0.85rem;
   }
-  /* Quando o hamburger é clicado, o menu aparece com itens verticalmente */
+  /* Quando o menu é aberto, os itens são dispostos verticalmente */
   .nav-menu.open ul {
     flex-direction: column;
     align-items: flex-start;
@@ -214,6 +211,8 @@ html, body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 10px;
+  word-break: break-word; /* Permite quebra de linha */
+  max-width: 90%;       /* Força quebra se necessário */
 }
 .calc-info p {
   font-size: 1.1rem;
@@ -246,6 +245,7 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
+
 /* BOTÃO CALCULAR – Estilo “pill” chamativo */
 .btn-calc {
   display: inline-block;
@@ -439,7 +439,6 @@ html, body {
     display: block !important;
     order: 2;
   }
-  /* No mobile, o menu aparece verticalmente */
   .nav-menu.open ul {
     flex-direction: column;
     align-items: flex-start;
