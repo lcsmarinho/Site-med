@@ -6,7 +6,175 @@
   <title>FAQ - NefroClínicas</title>
   <!-- Importa a fonte Poppins -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+  <!-- CSS principal -->
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Estilos específicos para a página FAQ -->
+  <style>
+    /* Fundo geral da página */
+    body {
+      background-color: #e8e8e8;
+    }
+    /* Container principal da FAQ */
+    .faq-page {
+      background-color: var(--white);
+      padding: 40px 20px;
+      border-radius: 8px;
+      margin: 40px auto;
+      max-width: 900px;
+      text-align: center;
+    }
+    .faq-page h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    .faq-page p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      list-style: none;
+      padding: 0;
+    }
+    /* Cada item de FAQ sem sombra */
+    .faq-item {
+      background: var(--white);
+      border: 1px solid rgba(246,59,45,0.3);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      transition: opacity 0.3s ease, max-height 0.3s ease;
+    }
+    /* Itens extras inicialmente ocultos */
+    .faq-item.hidden {
+      opacity: 0;
+      max-height: 0;
+    }
+    /* Cabeçalho da FAQ: fundo vermelho, texto branco */
+    .faq-question {
+      width: 100%;
+      background-color: var(--primary-red);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.3s;
+      color: var(--white);
+      border-radius: 8px 8px 0 0;
+    }
+    .faq-question:hover {
+      background-color: var(--dark-red);
+    }
+    .faq-icon {
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: transform 0.3s;
+      color: var(--white);
+    }
+    /* Área de resposta: fundo branco, texto cinza */
+    .faq-answer {
+      background-color: #fff;
+      padding: 0 20px;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      border-top: 1px solid #ddd;
+      font-size: 0.95rem;
+      color: #666;
+    }
+    .faq-answer p {
+      margin: 10px 0;
+    }
+    .faq-item.active .faq-answer {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      max-height: 300px;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+    /* Sentinel para carregar FAQs extras */
+    #faq-sentinel {
+      height: 1px;
+    }
+    /* Botão WhatsApp na seção inferior (CTA) - versão PC */
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      background-color: #25D366;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.2s;
+      font-size: 1rem;
+    }
+    .btn-whatsapp img {
+      margin-left: 8px;
+      height: 24px;
+    }
+    .btn-whatsapp:hover {
+      background-color: #1ebc57;
+      transform: translateY(-2px);
+    }
+    /* Botão flutuante fixo (WhatsApp) - circular */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .floating-whatsapp img {
+      width: 24px;
+      height: 24px;
+    }
+    /* Botão CTA do Header */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--primary-red);
+      color: var(--white);
+      padding: 10px 40px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .btn-cta img.btn-icon {
+      margin-left: 8px;
+      height: 30px; /* Ícone maior */
+    }
+    /* No mobile, oculta o ícone do botão CTA no header */
+    @media (max-width: 768px) {
+      .btn-cta img.btn-icon {
+        display: none;
+      }
+    }
+    /* Alinhamento e espaçamento da seção inferior (CTA) */
+    .cta-bottom .cta-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -18,7 +186,6 @@
         </a>
       </div>
       <div class="header-right">
-        <!-- Menu de navegação -->
         <nav class="nav-menu" id="nav-menu">
           <ul>
             <li><a href="index.html">Início</a></li>
@@ -28,9 +195,10 @@
             <li><a href="contact.html">Contato</a></li>
           </ul>
         </nav>
-        <!-- Botão CTA -->
-        <a href="contact.html" class="btn-cta">Agendar consulta</a>
-        <!-- Botão Hamburger (aparece no mobile) -->
+        <!-- Botão CTA no header: na versão desktop, exibe texto e ícone; no mobile, apenas texto -->
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-cta">
+          Agendar Consulta <img src="images/whatsapp.png" alt="WhatsApp" class="btn-icon">
+        </a>
         <button id="hamburger" type="button" class="hamburger">
           <span></span>
           <span></span>
@@ -40,14 +208,12 @@
     </div>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL FAQ -->
+  <!-- CONTEÚDO FAQ -->
   <main class="container faq-page">
-    <section class="faq-intro">
-      <h1>FAQ - Dúvidas frequentes</h1>
-      <p>Reunimos as perguntas mais comuns sobre nossa calculadora renal e o monitoramento da função dos rins. Clique em cada pergunta para ver a resposta.</p>
-    </section>
+    <h1>FAQ - Dúvidas frequentes</h1>
+    <p>Encontre respostas para as dúvidas mais comuns sobre nossos serviços e ferramentas.</p>
     <div class="faq-list">
-      <!-- FAQ Item 1 -->
+      <!-- Itens iniciais (5 visíveis) -->
       <div class="faq-item">
         <button class="faq-question">
           <span>Quais informações preciso ter para usar a calculadora?</span>
@@ -57,46 +223,107 @@
           <p>Você precisa da sua idade, sexo e do valor da creatinina sérica (mg/dL). Em alguns casos, o peso também pode ser solicitado.</p>
         </div>
       </div>
-      <!-- FAQ Item 2 -->
       <div class="faq-item">
         <button class="faq-question">
           <span>Este cálculo substitui a consulta com o nefrologista?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Não. A calculadora serve apenas como ferramenta de orientação. Para um diagnóstico preciso, consulte um especialista.</p>
+          <p>Não. A calculadora é apenas uma ferramenta de orientação. Para um diagnóstico preciso, consulte um especialista.</p>
         </div>
       </div>
-      <!-- FAQ Item 3 -->
       <div class="faq-item">
         <button class="faq-question">
-          <span>Como interpretar meu resultado?</span>
+          <span>Como interpretar o resultado da TFG?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Valores abaixo de 60 mL/min podem indicar redução da função renal; entre 60 e 120 mL/min estão na média; e acima de 120 mL/min podem indicar hiperfiltração. Consulte seu médico para uma interpretação detalhada.</p>
+          <p>Valores acima de 90 mL/min são considerados normais; entre 60 e 89 podem indicar uma leve diminuição; abaixo de 60 sugerem insuficiência renal.</p>
         </div>
       </div>
-      <!-- FAQ Item 4 -->
       <div class="faq-item">
+        <button class="faq-question">
+          <span>Qual é a importância da TFG?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>A TFG é essencial para avaliar a função dos rins e detectar precocemente possíveis disfunções.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Como posso melhorar minha função renal?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Manter uma dieta equilibrada, hidratação adequada e acompanhamento médico regular são fundamentais para preservar a função renal.</p>
+        </div>
+      </div>
+      <!-- Itens extras (5 FAQs ocultos inicialmente) -->
+      <div class="faq-item extra-faq hidden">
         <button class="faq-question">
           <span>Com que frequência devo calcular minha TFG?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Depende do seu quadro clínico. Geralmente, pacientes com fatores de risco acompanham os valores semestralmente ou anualmente. Siga sempre as orientações do seu médico.</p>
+          <p>Pacientes com fatores de risco devem acompanhar os valores semestral ou anualmente. Consulte seu médico para orientações.</p>
+        </div>
+      </div>
+      <div class="faq-item extra-faq hidden">
+        <button class="faq-question">
+          <span>Quais são os limites para a função renal normal?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Em geral, uma TFG acima de 90 mL/min é considerada normal, mas pode variar conforme a idade e o contexto clínico.</p>
+        </div>
+      </div>
+      <div class="faq-item extra-faq hidden">
+        <button class="faq-question">
+          <span>Qual fórmula é utilizada para calcular a TFG?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>A calculadora utiliza a fórmula de Cockcroft-Gault com um peso fixo para estimar a TFG.</p>
+        </div>
+      </div>
+      <div class="faq-item extra-faq hidden">
+        <button class="faq-question">
+          <span>Quais fatores podem afetar a TFG?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Idade, sexo, peso e níveis de creatinina são alguns dos fatores que podem influenciar a TFG.</p>
+        </div>
+      </div>
+      <div class="faq-item extra-faq hidden">
+        <button class="faq-question">
+          <span>Quais exames complementares podem ser necessários?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Exames de sangue, urina e imagem podem ser recomendados para uma avaliação completa da função renal.</p>
         </div>
       </div>
     </div>
+    <!-- Sentinel para disparar a revelação dos FAQs extras via scroll -->
+    <div id="faq-sentinel"></div>
   </main>
 
   <!-- CTA INFERIOR -->
   <section class="cta-bottom">
     <div class="container cta-content">
       <h3>Agende uma consulta!</h3>
-      <a href="https://wa.me/5511999999999" target="_blank" class="btn-whatsapp">WhatsApp</a>
+      <a href="https://wa.me/5511999999999" target="_blank" class="btn-whatsapp">
+        Agendar Consulta <img src="images/whatsapp_color.png" alt="WhatsApp" style="margin-left:8px; height:24px;">
+      </a>
     </div>
   </section>
+
+  <!-- Botão flutuante (WhatsApp) - circular -->
+  <a href="https://wa.me/5511999999999" target="_blank" class="floating-whatsapp">
+    <img src="images/whatsapp_color.png" alt="WhatsApp">
+  </a>
 
   <!-- RODAPÉ -->
   <footer class="footer">
@@ -105,7 +332,73 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="assets/js/main.js"></script>
+  <!-- SCRIPT: FAQ Accordion, Menu Hamburger e Carregamento Automático de FAQs -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Menu Hamburger
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function(e) {
+          e.preventDefault();
+          navMenu.classList.toggle('open');
+          console.log('Hamburger clicado. Estado atual do nav-menu:', navMenu.className);
+        });
+      } else {
+        console.warn("Não foi possível encontrar 'hamburger' ou 'nav-menu'.");
+      }
+      
+      // Ativação automática dos links do header
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-menu ul li a');
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if ((currentPath === '/' || currentPath.endsWith('/index.html')) && linkPath === 'index.html') {
+          link.classList.add('active');
+        } else if (currentPath.includes(linkPath) && linkPath !== 'index.html') {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+      
+      // Carregar FAQs extras via IntersectionObserver
+      const faqSentinel = document.getElementById('faq-sentinel');
+      const extraFaqs = document.querySelectorAll('.extra-faq');
+      
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              extraFaqs.forEach(item => {
+                item.classList.remove('hidden');
+                item.style.opacity = "1";
+                item.style.maxHeight = "300px";
+              });
+              observer.unobserve(faqSentinel);
+            }
+          });
+        }, { threshold: 0.5 });
+        observer.observe(faqSentinel);
+      } else {
+        extraFaqs.forEach(item => {
+          item.classList.remove('hidden');
+          item.style.opacity = "1";
+          item.style.maxHeight = "300px";
+        });
+      }
+    });
+  </script>
+  <!-- Se houver outro main.js, certifique-se de não duplicar a lógica -->
+  <!--<script src="assets/js/main.js"></script>-->
 </body>
 </html>

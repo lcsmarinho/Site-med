@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.warn("Elemento com id 'nav-menu' não encontrado.");
   }
   
-  // Garante que o botão tenha type="button"
   if (hamburger && !hamburger.getAttribute('type')) {
     hamburger.setAttribute('type', 'button');
   }
