@@ -9,15 +9,10 @@
 :root {
   --primary-red: #f63b2d;   /* Vermelho principal */
   --dark-red: #d73228;      /* Vermelho para hover */
-  --text-color: #333;       /* Cor padrão de texto */
+  --text-color: #333;       /* Cor padrão do texto */
   --gray-bg: #f7f7f7;
   --white: #fff;
 }
-
-/* IMPORTAÇÃO DA FONTE */
-/* Certifique-se de incluir no <head> do HTML:
-   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
-*/
 
 /* SCROLL SNAP E CONFIGURAÇÕES GLOBAIS */
 html, body {
@@ -31,7 +26,7 @@ html, body {
   color: var(--text-color);
 }
 
-/* Cada seção ocupará 95vh, exceto a calculadora que usará 90vh para exibir parte da próxima */
+/* Cada seção ocupará 95vh, exceto a calculadora (90vh) */
 .snap-section {
   width: 100%;
   height: 95vh;
@@ -41,7 +36,6 @@ html, body {
   justify-content: center;
 }
 
-/* Seção da calculadora: 90vh */
 .calculator-page {
   height: 90vh;
   background: var(--gray-bg);
@@ -56,10 +50,6 @@ html, body {
 }
 
 /* ====== HEADER ====== */
-/* Utiliza layout flex com duas áreas:
-   - A logo à esquerda.
-   - Uma área “header-right” (menu e botão CTA) agrupadas à direita.
-*/
 .header {
   width: 100%;
   background-color: var(--white);
@@ -72,11 +62,12 @@ html, body {
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Logo à esquerda e header-right à direita */
   height: 70px;
   padding: 0 20px;
 }
 
+/* LOGO */
 .logo {
   flex: 0 0 auto;
 }
@@ -85,25 +76,26 @@ html, body {
   object-fit: contain;
 }
 
-/* Área de itens à direita: alinhados juntos */
+/* HEADER-RIGHT: Agrupa menu e botão CTA */
 .header-right {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* MENU DE NAVEGAÇÃO (desktop) */
+/* MENU DE NAVEGAÇÃO (DESKTOP) */
+/* O menu ocupará todo o espaço entre a logo e o botão CTA,
+   mas se posiciona à direita */
 .nav-menu {
   flex: 1;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 .nav-menu ul {
   display: inline-flex;
   gap: 20px;
   list-style: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; /* Alinha os itens para a direita */
 }
 .nav-menu ul li a {
   text-decoration: none;
@@ -137,7 +129,28 @@ html, body {
   background-color: var(--dark-red);
 }
 
-/* HAMBURGER (para mobile) */
+/* MENU MOBILE - Por padrão, o menu de navegação no desktop é utilizado.
+   Quando o mobile é ativado, usamos a classe "open" para o menu.
+   Aqui, ocultamos o menu (desktop) no mobile e definimos seu estilo para exibição vertical. */
+.nav-menu {
+  /* O menu desktop está visível por padrão (flex) */
+}
+.nav-menu.open {
+  display: block !important;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  width: 60%;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HAMBURGER (MOBILE) */
 .hamburger {
   background: none;
   border: none;
@@ -155,70 +168,35 @@ html, body {
   transition: 0.3s;
 }
 
-/* MENU MOBILE */
-.nav {
-  display: none;
-  position: absolute;
-  top: 70px;
-  left: 0;
-  width: 100%;
-  background: var(--white);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  animation: fadeIn 0.3s ease;
-}
-.nav.open {
-  display: block;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 10px 0;
-}
-.nav-links li {
-  margin: 10px 0;
-}
-.nav-links li a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 500;
-  transition: color 0.3s;
-}
-.nav-links li a:hover {
-  color: var(--primary-red);
-}
-
-/* RESPONSIVIDADE DO HEADER (mobile) */
+/* RESPONSIVIDADE DO HEADER (MOBILE) */
 @media (max-width: 768px) {
   .header-content {
-    /* No mobile, queremos que o botão CTA fique menor e centralizado,
-       e o hamburger à direita. */
     justify-content: space-between;
+    position: relative;
   }
+  /* Oculta o menu desktop */
   .nav-menu {
-    display: none; /* Usamos o menu mobile */
+    display: none;
   }
+  /* Exibe o hamburger */
   .hamburger {
-    display: block;
+    display: block !important;
     order: 2;
   }
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  /* Reduz o botão CTA e centraliza-o */
+  /* Botão CTA centralizado e menor */
   .btn-cta {
-    padding: 8px 20px;
-    font-size: 0.85rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+  /* Quando o hamburger é clicado, o menu aparece com itens verticalmente */
+  .nav-menu.open ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 20px;
   }
 }
 
@@ -234,18 +212,18 @@ html, body {
 }
 .calc-info h1 {
   font-size: 2rem;
-  font-weight: 700; /* Título mais bold */
+  font-weight: 700;
   margin-bottom: 10px;
 }
 .calc-info p {
   font-size: 1.1rem;
   margin-bottom: 10px;
   line-height: 1.4;
-  opacity: 0.7; /* Subtítulo mais opaco */
+  opacity: 0.7;
 }
 .calc-form {
   background-color: var(--white);
-  width: 35%;  /* Quadrado mais estreito */
+  width: 35%;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -268,7 +246,6 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
 /* BOTÃO CALCULAR – Estilo “pill” chamativo */
 .btn-calc {
   display: inline-block;
@@ -298,7 +275,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0,0,0,0.4);
 }
 .modal-content {
   background-color: var(--white);
@@ -339,7 +316,7 @@ html, body {
 .faq-section {
   background-color: var(--primary-red);
   padding: 20px 0;
-  margin-top: -40px; /* Aproxima o FAQ da calculadora */
+  margin-top: -40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -364,7 +341,6 @@ html, body {
 .faq-list {
   text-align: left;
 }
-/* Cada item do FAQ */
 .faq-item {
   background: var(--white);
   border-radius: 8px;
@@ -449,7 +425,6 @@ html, body {
   .btn-calc {
     width: 100%;
   }
-  /* HEADER: Para mobile, reposiciona o botão CTA centralizado e menor */
   .header-content {
     position: relative;
   }
@@ -460,10 +435,15 @@ html, body {
     padding: 8px 20px;
     font-size: 0.85rem;
   }
-  /* Hamburger fica à direita */
   .hamburger {
-    position: relative;
-    order: 3;
     display: block !important;
+    order: 2;
+  }
+  /* No mobile, o menu aparece verticalmente */
+  .nav-menu.open ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 20px;
   }
 }

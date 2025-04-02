@@ -1,112 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NefroClínicas - Clínica de Nefrologia</title>
+  <title>NefroClínicas - Início</title>
+  <!-- Importa a fonte Poppins -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+  <!-- Referência para o CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-
-
 </head>
 <body>
+  <!-- HEADER -->
   <header class="header">
     <div class="container header-content">
       <div class="logo">
-        <img src="images/logo.png" alt="NefroClínicas">
+        <a href="index.html">
+          <img src="images/logo.png" alt="NefroClínicas">
+        </a>
       </div>
-  
       <div class="header-right">
-        <!-- Menu de navegação (desktop) -->
-        <nav class="nav-menu">
+        <nav class="nav-menu" id="nav-menu">
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="services.html">Serviços</a></li>
-            <li><a href="calculadora-renal.html" class="active">Calculadora Renal</a></li>
+            <li><a href="calculadora-renal.html">Calculadora Renal</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contato</a></li>
           </ul>
         </nav>
-  
-        <!-- Botão CTA -->
         <a href="contact.html" class="btn-cta">Agendar consulta</a>
-  
-        <!-- Botão Hamburger (mobile) -->
-        <button class="hamburger" id="hamburger">
+        <button id="hamburger" type="button" class="hamburger">
           <span></span>
           <span></span>
           <span></span>
         </button>
-  
-        <!-- Menu Mobile -->
-        <nav class="nav" id="nav-menu-mobile">
-          <ul class="nav-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="services.html">Serviços</a></li>
-            <li><a href="calculadora-renal.html" class="active">Calculadora Renal</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contato</a></li>
-          </ul>
-        </nav>
       </div>
     </div>
   </header>
-  
-  
 
-  <!-- Hero / Carrossel simples -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content container">
-      <h1>Excelência em Nefrologia</h1>
-      <p>Cuidados renais com tecnologia de ponta e atendimento humanizado.</p>
-      <a href="contact.html" class="btn btn-primary">Agende sua consulta</a>
+  <!-- CONTEÚDO DA PÁGINA -->
+  <section class="snap-section">
+    <div class="container">
+      <h1>Bem-vindo ao NefroClínicas</h1>
+      <p>Esta é a página inicial de exemplo. Reduza a janela para ver o menu mobile em ação.</p>
     </div>
   </section>
 
-  <!-- Seção de Serviços -->
-  <main class="container">
-    <section class="services">
-      <h2>Nossos Serviços</h2>
-      <div class="services-grid">
-        <div class="service-item">
-          <img src="images/service1.jpg" alt="Atendimento Personalizado">
-          <h3>Atendimento Personalizado</h3>
-          <p>Tratamentos individualizados para cada paciente.</p>
-        </div>
-        <div class="service-item">
-          <img src="images/service2.jpg" alt="Tecnologia Avançada">
-          <h3>Tecnologia Avançada</h3>
-          <p>Equipamentos modernos para diagnósticos precisos.</p>
-        </div>
-        <div class="service-item">
-          <img src="images/service3.jpg" alt="Equipe Especializada">
-          <h3>Equipe Especializada</h3>
-          <p>Profissionais experientes e dedicados à saúde renal.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Preview da seção “Sobre” -->
-    <section class="about-preview">
-      <div class="about-content">
-        <h2>Sobre a NefroClínicas</h2>
-        <p>Nossa clínica se destaca pelo compromisso com a saúde renal e pela inovação em tratamentos. Conheça nossa história e valores.</p>
-        <a href="about.html" class="btn btn-secondary">Saiba mais</a>
-      </div>
-      <div class="about-image">
-        <img src="images/about.jpg" alt="Sobre NefroClínicas">
-      </div>
-    </section>
-  </main>
-
-  <!-- Rodapé -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>&copy; 2025 NefroClínicas - Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
+  <!-- REFERÊNCIA DO SCRIPT JS -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora Renal - NefroClínicas</title>
-  <!-- Fonte Poppins -->
+  <!-- Importa a fonte Poppins -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -12,13 +12,15 @@
   <!-- HEADER -->
   <header class="header">
     <div class="container header-content">
+      <!-- Logo à esquerda -->
       <div class="logo">
-        <img src="images/logo.png" alt="NefroClínicas">
+        <a href="index.html">
+          <img src="images/logo.png" alt="NefroClínicas">
+        </a>
       </div>
-  
+      <!-- Área à direita: menu e botão CTA; usamos apenas um menu (id="nav-menu") -->
       <div class="header-right">
-        <!-- Menu de navegação (desktop) -->
-        <nav class="nav-menu">
+        <nav class="nav-menu" id="nav-menu">
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="services.html">Serviços</a></li>
@@ -27,31 +29,15 @@
             <li><a href="contact.html">Contato</a></li>
           </ul>
         </nav>
-  
-        <!-- Botão CTA -->
         <a href="contact.html" class="btn-cta">Agendar consulta</a>
-  
-        <!-- Botão Hamburger (mobile) -->
-        <button class="hamburger" id="hamburger">
+        <button id="hamburger" type="button" class="hamburger">
           <span></span>
           <span></span>
           <span></span>
         </button>
-  
-        <!-- Menu Mobile -->
-        <nav class="nav" id="nav-menu-mobile">
-          <ul class="nav-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="services.html">Serviços</a></li>
-            <li><a href="calculadora-renal.html" class="active">Calculadora Renal</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contato</a></li>
-          </ul>
-        </nav>
       </div>
     </div>
   </header>
-  
 
   <!-- SEÇÃO 1: CALCULADORA RENAL -->
   <section class="snap-section calculator-page">
@@ -117,7 +103,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>Não. A calculadora serve apenas como uma ferramenta de orientação. Para um diagnóstico preciso, consulte um especialista.</p>
+            <p>Não. A calculadora serve apenas como ferramenta de orientação. Para um diagnóstico preciso, consulte um especialista.</p>
           </div>
         </div>
         <!-- FAQ Item 3 -->
@@ -141,8 +127,9 @@
     </div>
   </footer>
 
-  <!-- SCRIPT: Cálculo e FAQ Accordion -->
+  <!-- SCRIPT: Lógica do menu, ativação dos links, cálculo e FAQ Accordion -->
   <script>
+    // Função de cálculo da função renal
     function calculateRenal() {
       const creatinina = parseFloat(document.getElementById('creatinina').value);
       const idade = parseFloat(document.getElementById('idade').value);
@@ -168,15 +155,16 @@
       document.getElementById('resultModal').style.display = "block";
     }
 
+    // Modal: fechar quando clicar no "X" ou fora dele
     document.getElementById('modalClose').addEventListener('click', () => {
       document.getElementById('resultModal').style.display = "none";
     });
-    window.onclick = function(event) {
+    window.addEventListener('click', (event) => {
       const modal = document.getElementById('resultModal');
       if (event.target === modal) {
         modal.style.display = "none";
       }
-    };
+    });
 
     // FAQ Accordion
     document.addEventListener('DOMContentLoaded', () => {
@@ -188,7 +176,37 @@
         });
       });
     });
+
+    // Ativação automática dos links com base no URL atual e lógica do menu hamburger
+    document.addEventListener('DOMContentLoaded', function() {
+      // Ativação automática
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-menu ul li a');
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if ((currentPath === '/' || currentPath.endsWith('/index.html')) && linkPath === 'index.html') {
+          link.classList.add('active');
+        } else if (currentPath.includes(linkPath) && linkPath !== 'index.html') {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      // Menu hamburger
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function(e) {
+          e.preventDefault();
+          navMenu.classList.toggle('open');
+          console.log('Hamburger clicado. Estado atual do nav-menu:', navMenu.className);
+        });
+      } else {
+        console.warn("Não foi possível encontrar 'hamburger' ou 'nav-menu'.");
+      }
+    });
   </script>
-  <script src="assets/js/main.js"></script>
+  <!-- Opcionalmente, se houver outro arquivo main.js, remova ou integre sua lógica -->
 </body>
 </html>

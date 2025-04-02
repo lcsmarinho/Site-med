@@ -4,118 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ - NefroClínicas</title>
-  <!-- CSS principal -->
+  <!-- Importa a fonte Poppins -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
+  <!-- HEADER -->
   <header class="header">
     <div class="container header-content">
       <div class="logo">
-        <img src="images/logo.png" alt="NefroClínicas">
+        <a href="index.html">
+          <img src="images/logo.png" alt="NefroClínicas">
+        </a>
       </div>
-  
       <div class="header-right">
-        <!-- Menu de navegação (desktop) -->
-        <nav class="nav-menu">
+        <!-- Menu de navegação -->
+        <nav class="nav-menu" id="nav-menu">
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="services.html">Serviços</a></li>
-            <li><a href="calculadora-renal.html" class="active">Calculadora Renal</a></li>
-            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="calculadora-renal.html">Calculadora Renal</a></li>
+            <li><a href="faq.html" class="active">FAQ</a></li>
             <li><a href="contact.html">Contato</a></li>
           </ul>
         </nav>
-  
         <!-- Botão CTA -->
         <a href="contact.html" class="btn-cta">Agendar consulta</a>
-  
-        <!-- Botão Hamburger (mobile) -->
-        <button class="hamburger" id="hamburger">
+        <!-- Botão Hamburger (aparece no mobile) -->
+        <button id="hamburger" type="button" class="hamburger">
           <span></span>
           <span></span>
           <span></span>
         </button>
-  
-        <!-- Menu Mobile -->
-        <nav class="nav" id="nav-menu-mobile">
-          <ul class="nav-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="services.html">Serviços</a></li>
-            <li><a href="calculadora-renal.html" class="active">Calculadora Renal</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contato</a></li>
-          </ul>
-        </nav>
       </div>
     </div>
   </header>
-  
-  
 
-  <!-- Conteúdo principal da FAQ -->
+  <!-- CONTEÚDO PRINCIPAL FAQ -->
   <main class="container faq-page">
     <section class="faq-intro">
       <h1>FAQ - Dúvidas frequentes</h1>
-      <p>Reunimos as perguntas mais comuns sobre nossa calculadora renal e o monitoramento da função dos rins. Se você tiver dúvidas adicionais, nossa equipe está pronta para ajudar através do WhatsApp ou telefone.</p>
+      <p>Reunimos as perguntas mais comuns sobre nossa calculadora renal e o monitoramento da função dos rins. Clique em cada pergunta para ver a resposta.</p>
     </section>
-
     <div class="faq-list">
       <!-- FAQ Item 1 -->
       <div class="faq-item">
         <button class="faq-question">
-          <span>Quais informações preciso ter em mãos para usar a calculadora?</span>
+          <span>Quais informações preciso ter para usar a calculadora?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Para utilizar nossa calculadora de função renal, você precisará da sua idade, sexo e valor recente de creatinina sérica (mg/dL). Em algumas fórmulas, também é solicitado o peso.</p>
+          <p>Você precisa da sua idade, sexo e do valor da creatinina sérica (mg/dL). Em alguns casos, o peso também pode ser solicitado.</p>
         </div>
       </div>
       <!-- FAQ Item 2 -->
       <div class="faq-item">
         <button class="faq-question">
-          <span>Este cálculo substitui a consulta com nefrologista?</span>
+          <span>Este cálculo substitui a consulta com o nefrologista?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Não. A calculadora serve como uma ferramenta de orientação e estimativa. Para diagnóstico e acompanhamento adequados, é fundamental consultar um nefrologista ou profissional de saúde qualificado.</p>
+          <p>Não. A calculadora serve apenas como ferramenta de orientação. Para um diagnóstico preciso, consulte um especialista.</p>
         </div>
       </div>
       <!-- FAQ Item 3 -->
       <div class="faq-item">
         <button class="faq-question">
-          <span>O que é a Taxa de Filtração Glomerular (TFG)?</span>
+          <span>Como interpretar meu resultado?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>A TFG é uma medida que estima a capacidade dos rins filtrarem o sangue. Ela é utilizada para avaliar a função renal e detectar possíveis insuficiências.</p>
+          <p>Valores abaixo de 60 mL/min podem indicar redução da função renal; entre 60 e 120 mL/min estão na média; e acima de 120 mL/min podem indicar hiperfiltração. Consulte seu médico para uma interpretação detalhada.</p>
         </div>
       </div>
       <!-- FAQ Item 4 -->
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>Como interpretar meu resultado da TFG?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Em geral, valores de TFG acima de 90 mL/min são considerados normais, entre 60 e 89 mL/min podem indicar uma leve diminuição da função renal, e valores abaixo de 60 mL/min exigem avaliação médica. Consulte um nefrologista para análise individualizada.</p>
-        </div>
-      </div>
-      <!-- FAQ Item 5 -->
       <div class="faq-item">
         <button class="faq-question">
           <span>Com que frequência devo calcular minha TFG?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Depende da recomendação do seu médico e do seu estado de saúde. Em geral, pacientes com risco de doença renal podem acompanhar os valores semestral ou anualmente. Sempre siga a orientação do seu profissional de saúde.</p>
+          <p>Depende do seu quadro clínico. Geralmente, pacientes com fatores de risco acompanham os valores semestralmente ou anualmente. Siga sempre as orientações do seu médico.</p>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Barra vermelha inferior (CTA) -->
+  <!-- CTA INFERIOR -->
   <section class="cta-bottom">
     <div class="container cta-content">
       <h3>Agende uma consulta!</h3>
@@ -123,35 +98,14 @@
     </div>
   </section>
 
-  <!-- Rodapé -->
+  <!-- RODAPÉ -->
   <footer class="footer">
     <div class="container footer-content">
       <p>&copy; 2025 NefroClínicas - Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- Script para o Accordion (FAQ) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const faqItems = document.querySelectorAll('.faq-item');
-
-      faqItems.forEach(item => {
-        const questionBtn = item.querySelector('.faq-question');
-        questionBtn.addEventListener('click', () => {
-          // Fecha qualquer outro item aberto (opcional):
-          /* 
-          faqItems.forEach(otherItem => {
-            if (otherItem !== item) {
-              otherItem.classList.remove('active');
-            }
-          });
-          */
-          // Abre/Fecha o item clicado
-          item.classList.toggle('active');
-        });
-      });
-    });
-  </script>
+  <!-- Scripts -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>
