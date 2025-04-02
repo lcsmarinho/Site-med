@@ -1,284 +1,420 @@
-/* Reset básico */
+/* RESET BÁSICO */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Fonte e cores globais */
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: #f7f7f7;
-  color: #333;
-  line-height: 1.6;
-}
-
-/* Container centralizado */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 0;
-}
-
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eaeaea;
-  padding: 10px 0;
-  position: relative;
-  z-index: 10;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.logo {
-  font-size: 1.8em;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Hamburger Menu */
-.hamburger {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  display: block;
-}
-
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background: #333;
-  transition: all 0.3s ease;
-}
-
-/* Hamburger animation */
-.hamburger.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Navegação – inicialmente oculta em mobile */
-.nav {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  animation: fadeIn 0.3s ease;
-}
-
-.nav.open {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-}
-
-.nav-links li {
-  text-align: center;
-  padding: 10px 0;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-links li a:hover {
-  color: #007bff;
-}
-
-/* Hero Section */
-.hero {
-  background: url('../images/hero.jpg') no-repeat center center/cover;
-  min-height: 400px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  padding: 20px;
-}
-
-.hero h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-}
-
-/* Botões */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #007bff;
-  color: #fff;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.btn:hover {
-  background: #0056b3;
-}
-
-/* Seções e títulos */
-main h2, main h3 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Espaçamento das seções */
-section {
-  margin-bottom: 40px;
-}
-
-/* Cards */
-.card {
-  background: #fff;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  width: 100%;
-  display: block;
-}
-
-.card-content {
-  padding: 15px;
-}
-
-/* Grid Layouts */
-.grid {
-  display: grid;
-  gap: 20px;
-}
-
-/* Inicialmente, grid com 1 coluna (mobile) */
-.grid-3 {
-  grid-template-columns: 1fr;
-}
-
-.grid-2 {
-  grid-template-columns: 1fr;
-}
-
-/* Glossário */
-.glossario div {
-  margin-bottom: 20px;
-}
-
-.glossario dt {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-/* Lista de agendamento */
-.agendamento-links {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.agendamento-links li {
-  margin-bottom: 10px;
-}
-
-/* Footer */
-.footer {
-  border-top: 1px solid #eaeaea;
-  text-align: center;
-  padding: 20px 0;
-  color: #777;
-}
-
-/* Media Queries */
-
-/* Para telas a partir de 480px */
-@media (min-width: 480px) {
-  .hero h2 {
-    font-size: 3em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  .hero p {
-    font-size: 1.3em;
+  
+  /* VARIÁVEIS DE CORES */
+  :root {
+    --primary-red: #f63b2d;   /* Vermelho principal */
+    --dark-red: #d73228;      /* Vermelho para hover */
+    --text-color: #333;       /* Cor padrão de texto */
+    --gray-bg: #f7f7f7;
+    --white: #fff;
   }
-}
-
-/* Para telas médias (tablets e acima) */
-@media (min-width: 768px) {
-  /* Esconde o hamburger e exibe o menu horizontal */
+  
+  /* SCROLL SNAP E CONFIGURAÇÕES GLOBAIS */
+  html, body {
+    width: 100%;
+    height: 100%;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: auto;
+    overflow-y: scroll;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--gray-bg);
+    color: var(--text-color);
+  }
+  
+  /* Cada seção ocupará 95vh, exceto a calculadora que será 90vh */
+  .snap-section {
+    width: 100%;
+    height: 95vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Para a seção da calculadora, usamos 90vh para exibir parte da próxima */
+  .calculator-page {
+    height: 90vh;
+    background: var(--gray-bg);
+    padding: 20px 0;
+  }
+  
+  /* CONTAINER PADRÃO */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* ====== HEADER ====== */
+  .header {
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding: 0 20px;
+  }
+  
+  .logo img {
+    height: 40px;
+    object-fit: contain;
+  }
+  
+  /* MENU DE NAVEGAÇÃO */
+  .nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav-menu ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+  }
+  
+  .nav-menu ul li a:hover,
+  .nav-menu ul li a.active {
+    color: var(--primary-red);
+  }
+  
+  /* BOTÃO CTA DO HEADER (modo desktop) */
+  .btn-cta {
+    text-decoration: none;
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 10px 40px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+  .btn-cta:hover {
+    background-color: var(--dark-red);
+  }
+  
+  /* HAMBURGER PARA MOBILE */
   .hamburger {
-    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
   }
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+  
+  /* MENU MOBILE */
   .nav {
-    display: block !important;
-    position: static;
-    box-shadow: none;
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: fadeIn 0.3s ease;
+  }
+  .nav.open {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   .nav-links {
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 20px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 0;
   }
-}
-
-/* Para telas grandes (desktop) */
-@media (min-width: 1024px) {
-  .hero h2 {
-    font-size: 3.5em;
+  .nav-links li {
+    margin: 10px 0;
   }
   .nav-links li a {
-    font-size: 1em;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
   }
-}
+  .nav-links li a:hover {
+    color: var(--primary-red);
+  }
+  @media (min-width: 768px) {
+    .hamburger { display: none; }
+    .nav {
+      display: block !important;
+      position: static;
+      box-shadow: none;
+    }
+    .nav-links {
+      flex-direction: row;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+  }
+  
+  /* ====== SEÇÃO: CALCULADORA (Seção 1) ====== */
+  .calc-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .calc-info {
+    width: 50%;
+  }
+  .calc-info h1 {
+    font-size: 2rem;
+    font-weight: 700; /* Título mais bold */
+    margin-bottom: 10px;
+  }
+  .calc-info p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    opacity: 0.7; /* Subtítulo mais opaco */
+  }
+  .calc-form {
+    background-color: var(--white);
+    width: 35%;  /* Quadrado mais estreito */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .calc-form h2 {
+    margin-bottom: 15px;
+  }
+  .form-group {
+    margin-bottom: 10px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .btn-calc {
+    display: inline-block;
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  .btn-calc:hover {
+    background-color: var(--dark-red);
+  }
+  
+  /* ====== MODAL (POP-UP) ====== */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1500;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modal-content {
+    background-color: var(--white);
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: var(--text-color);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 10px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  .btn-primary:hover {
+    background-color: var(--dark-red);
+  }
+  
+  /* ====== SEÇÃO: FAQ (Seção 2) ====== */
+  .faq-section {
+    background-color: var(--primary-red);
+    padding: 20px 0;
+    margin-top: -40px;  /* Aproxima o FAQ da calculadora */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .faq-container {
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+  }
+  .faq-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .faq-container p {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 20px;
+  }
+  .faq-list {
+    text-align: left;
+  }
+  /* Cada item do FAQ */
+  .faq-item {
+    background: var(--white);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 15px 20px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s;
+    color: var(--text-color);
+  }
+  .faq-question:hover {
+    background: #f9f9f9;
+  }
+  .faq-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s;
+    color: var(--text-color);
+  }
+  .faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-top: 1px solid #eee;
+    font-size: 0.95rem;
+    color: #666 !important;  /* Força o texto a ser cinza */
+  }
+  .faq-answer * {
+    color: #666 !important;  /* Garante que qualquer tag interna também seja cinza */
+  }
+  .faq-item.active .faq-answer {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    max-height: 200px;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+  
+  /* ====== RODAPÉ ====== */
+  .footer {
+    background: var(--white);
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+  .footer p {
+    color: #666;
+  }
+  
+  /* ====== RESPONSIVIDADE ====== */
+  @media (max-width: 992px) {
+    .nav-menu ul {
+      gap: 20px;
+    }
+    .calc-content {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .calc-info, .calc-form {
+      width: 100%;
+    }
+  }
+  @media (max-width: 768px) {
+    .calc-info h1 {
+      font-size: 1.6rem;
+    }
+    .btn-calc {
+      width: 100%;
+    }
+    /* HEADER: Reposiciona o botão CTA para centralizado e menor */
+    .header-content {
+      position: relative;
+    }
+    .btn-cta {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 20px;
+      font-size: 0.85rem;
+    }
+    /* Hamburger fica à direita */
+    .hamburger {
+      position: relative;
+      order: 3;
+    }
+  }
+  

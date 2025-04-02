@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Renal - NefroClínicas</title>
+  <!-- Fonte Poppins -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="NefroClínicas">
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="services.html">Serviços</a></li>
+          <li><a href="calculadora-renal.html" class="active">Calculadora Renal</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contato</a></li>
+        </ul>
+      </nav>
+      <a href="contact.html" class="btn-cta">Agendar consulta</a>
+    </div>
+  </header>
+
+  <!-- SEÇÃO 1: CALCULADORA RENAL -->
+  <section class="snap-section calculator-page">
+    <div class="container calc-content">
+      <div class="calc-info">
+        <h1>Calculadora de Função Renal</h1>
+        <p>Calcule sua função renal gratuitamente e obtenha uma avaliação personalizada.</p>
+      </div>
+      <div class="calc-form">
+        <h2>Informe os dados:</h2>
+        <form id="renalForm">
+          <div class="form-group">
+            <label for="creatinina">Creatinina no Sangue (mg/dL):</label>
+            <input type="number" step="0.01" id="creatinina" placeholder="Ex: 1.2" required>
+          </div>
+          <div class="form-group">
+            <label for="idade">Idade (anos):</label>
+            <input type="number" id="idade" placeholder="Ex: 60" required>
+          </div>
+          <div class="form-group">
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" required>
+              <option value="">Escolha</option>
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+            </select>
+          </div>
+          <button type="button" class="btn-calc" onclick="calculateRenal()">Calcular</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE RESULTADO -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="modalClose">&times;</span>
+      <div id="modalResult"></div>
+      <a href="contact.html" class="btn btn-primary">Agendar Consulta</a>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: FAQ -->
+  <section class="snap-section faq-section">
+    <div class="container faq-container">
+      <h2>FAQ - Dúvidas frequentes</h2>
+      <p>Reunimos as perguntas mais comuns sobre nossa calculadora renal. Clique em cada pergunta para ver a resposta.</p>
+      <div class="faq-list">
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Quais informações preciso ter para usar a calculadora?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Você precisa da sua idade, sexo e do valor da creatinina sérica (mg/dL). Em alguns casos, o peso também pode ser solicitado.</p>
+          </div>
+        </div>
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Este cálculo substitui a consulta com o nefrologista?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Não. A calculadora serve apenas como uma ferramenta de orientação. Para um diagnóstico preciso, consulte um especialista.</p>
+          </div>
+        </div>
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Como interpretar meu resultado?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Valores abaixo de 60 mL/min podem indicar redução da função renal; entre 60 e 120 mL/min estão na média; e acima de 120 mL/min podem indicar hiperfiltração. Consulte seu médico para uma interpretação detalhada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 NefroClínicas - Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT: Cálculo e FAQ Accordion -->
+  <script>
+    function calculateRenal() {
+      const creatinina = parseFloat(document.getElementById('creatinina').value);
+      const idade = parseFloat(document.getElementById('idade').value);
+      const sexo = document.getElementById('sexo').value;
+      if (isNaN(creatinina) || isNaN(idade) || !sexo) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+      }
+      // Fórmula de Cockcroft-Gault com peso fixo = 70kg
+      const peso = 70;
+      let clearance = ((140 - idade) * peso) / (72 * creatinina);
+      if (sexo === 'feminino') clearance *= 0.85;
+      clearance = Math.round(clearance * 100) / 100;
+      let classification;
+      if (clearance < 60) classification = "abaixo da média";
+      else if (clearance <= 120) classification = "na média";
+      else classification = "acima da média";
+      document.getElementById('modalResult').innerHTML = `
+        <h2>Resultado</h2>
+        <p>Sua função renal estimada é <strong>${clearance} mL/min</strong>.</p>
+        <p>Isso indica que sua função está <strong>${classification}</strong>.</p>
+      `;
+      document.getElementById('resultModal').style.display = "block";
+    }
+
+    document.getElementById('modalClose').addEventListener('click', () => {
+      document.getElementById('resultModal').style.display = "none";
+    });
+    window.onclick = function(event) {
+      const modal = document.getElementById('resultModal');
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // FAQ Accordion
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          item.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
