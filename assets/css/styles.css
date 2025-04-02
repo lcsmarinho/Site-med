@@ -56,6 +56,10 @@ html, body {
 }
 
 /* ====== HEADER ====== */
+/* Utiliza layout flex com duas áreas:
+   - A logo à esquerda.
+   - Uma área “header-right” (menu e botão CTA) agrupadas à direita.
+*/
 .header {
   width: 100%;
   background-color: var(--white);
@@ -66,7 +70,6 @@ html, body {
 }
 
 .header-content {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -74,33 +77,52 @@ html, body {
   padding: 0 20px;
 }
 
+.logo {
+  flex: 0 0 auto;
+}
 .logo img {
   height: 40px;
   object-fit: contain;
 }
 
-/* MENU DE NAVEGAÇÃO */
-.nav-menu ul {
-  list-style: none;
+/* Área de itens à direita: alinhados juntos */
+.header-right {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  gap: 20px;
 }
 
+/* MENU DE NAVEGAÇÃO (desktop) */
+.nav-menu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.nav-menu ul {
+  display: inline-flex;
+  gap: 20px;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+}
 .nav-menu ul li a {
   text-decoration: none;
   color: var(--text-color);
   font-weight: 500;
-  transition: color 0.3s;
-  font-size: 0.95rem;
+  transition: color 0.3s, font-weight 0.3s;
+  font-size: 1rem;
 }
-
-.nav-menu ul li a:hover,
-.nav-menu ul li a.active {
+.nav-menu ul li a:hover {
   color: var(--primary-red);
 }
+.nav-menu ul li a.active {
+  color: var(--text-color);
+  font-weight: 600;
+}
 
-/* BOTÃO CTA DO HEADER (modo desktop) */
+/* BOTÃO CTA DO HEADER */
 .btn-cta {
+  flex: 0 0 auto;
   text-decoration: none;
   background-color: var(--primary-red);
   color: var(--white);
@@ -115,12 +137,14 @@ html, body {
   background-color: var(--dark-red);
 }
 
-/* HAMBURGER PARA MOBILE */
+/* HAMBURGER (para mobile) */
 .hamburger {
   background: none;
   border: none;
   cursor: pointer;
-  display: block;
+  display: none; /* Oculto no desktop */
+  position: relative;
+  z-index: 1100;
 }
 .hamburger span {
   display: block;
@@ -168,18 +192,33 @@ html, body {
 .nav-links li a:hover {
   color: var(--primary-red);
 }
-@media (min-width: 768px) {
-  .hamburger { display: none; }
-  .nav {
-    display: block !important;
-    position: static;
-    box-shadow: none;
+
+/* RESPONSIVIDADE DO HEADER (mobile) */
+@media (max-width: 768px) {
+  .header-content {
+    /* No mobile, queremos que o botão CTA fique menor e centralizado,
+       e o hamburger à direita. */
+    justify-content: space-between;
   }
-  .nav-links {
-    flex-direction: row;
+  .nav-menu {
+    display: none; /* Usamos o menu mobile */
   }
-  .nav-links li {
-    margin: 0 15px;
+  .hamburger {
+    display: block;
+    order: 2;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  /* Reduz o botão CTA e centraliza-o */
+  .btn-cta {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -229,13 +268,14 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-/* BOTÃO CALCULAR – Estilo mais chamativo */
+
+/* BOTÃO CALCULAR – Estilo “pill” chamativo */
 .btn-calc {
   display: inline-block;
   background-color: var(--primary-red);
   color: var(--white);
   padding: 12px 30px;
-  border-radius: 50px; /* Estilo "pill" */
+  border-radius: 50px;
   border: none;
   cursor: pointer;
   font-weight: 600;
@@ -299,7 +339,7 @@ html, body {
 .faq-section {
   background-color: var(--primary-red);
   padding: 20px 0;
-  margin-top: -40px;  /* Aproxima o FAQ da calculadora */
+  margin-top: -40px; /* Aproxima o FAQ da calculadora */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -409,7 +449,7 @@ html, body {
   .btn-calc {
     width: 100%;
   }
-  /* HEADER: Reposiciona o botão CTA para centralizado e menor */
+  /* HEADER: Para mobile, reposiciona o botão CTA centralizado e menor */
   .header-content {
     position: relative;
   }
@@ -424,5 +464,6 @@ html, body {
   .hamburger {
     position: relative;
     order: 3;
+    display: block !important;
   }
 }
