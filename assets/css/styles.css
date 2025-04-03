@@ -98,7 +98,7 @@ html, body {
   text-decoration: none;
   background-color: var(--primary-red);
   color: var(--white);
-  padding: 10px 40px;
+  padding: 15px 40px;
   border-radius: 30px;
   font-weight: 500;
   transition: background-color 0.3s;
@@ -121,6 +121,7 @@ html, body {
     line-height: 1.2;
     font-size: 0.85rem;
     border-radius: 30px;
+    display: none;
   }
   .btn-cta img {
     display: none;

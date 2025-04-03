@@ -6,7 +6,6 @@
   <title>Calculadora Renal - NefroClínicas</title>
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-
   <style>
     /* Seção 1: Calculadora Renal (desktop = 600px de altura) */
     .calculator-page {
@@ -16,7 +15,6 @@
       display: flex;          /* Para centralizar conteúdo verticalmente */
       align-items: center;    /* Alinhamento vertical */
     }
-
     /* Container interno */
     .calc-content {
       display: flex;
@@ -27,13 +25,11 @@
       width: 100%;
       margin: 0 auto;
     }
-
     /* Reduzindo a largura das caixas */
     .calc-info, .calc-form {
       width: 450px;
       max-width: 90%;
     }
-
     /* Título/subtítulo sem fundo ou borda extra */
     .calc-info {
       background: none;
@@ -50,7 +46,6 @@
       line-height: 1.4;
       opacity: 0.8;
     }
-
     /* Formulário */
     .calc-form {
       background-color: var(--white);
@@ -94,12 +89,10 @@
       background-color: var(--dark-red);
       transform: translateY(-2px);
     }
-
     /* Seção 2: FAQ (colada na seção de cima) */
     .faq-section {
       margin-top: 0; /* Nenhuma margem entre as seções no desktop */
     }
-
     /* Responsividade para mobile */
     @media (max-width: 768px) {
       .calculator-page {
@@ -142,15 +135,14 @@
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="services.html">Serviços</a></li>
-            <li><a href="calculadora-renal.html">Calculadora Renal</a></li>
+            <li><a href="calculadora-renal.html" class="active">Calculadora Renal</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contato</a></li>
-            <li><a href="quem-somos.html" class="active">Quem Somos</a></li>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
           </ul>
         </nav>
-        <a href="https://wa.me/5511999999999" target="_blank" class="btn-cta">
-          Agendar consulta
-        </a>
+        <!-- Botão CTA: Na versão mobile, este botão é ocultado via CSS -->
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-cta">Agendar consulta</a>
         <button id="hamburger" type="button" class="hamburger">
           <span></span>
           <span></span>
@@ -201,7 +193,7 @@
     </div>
   </div>
 
-  <!-- SEÇÃO 2: FAQ (colada na de cima) -->
+  <!-- SEÇÃO 2: FAQ -->
   <section class="snap-section faq-section">
     <div class="container faq-container">
       <h2>FAQ - Dúvidas frequentes</h2>
@@ -269,10 +261,9 @@
     <img src="images/whatsapp_color.png" alt="WhatsApp">
   </a>
 
-  <!-- JS Principal -->
   <script src="assets/js/main.js"></script>
   <script>
-    // Cálculo da Função Renal
+    // Função de cálculo da função renal
     function calculateRenal() {
       const creatinina = parseFloat(document.getElementById('creatinina').value);
       const idade = parseFloat(document.getElementById('idade').value);

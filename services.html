@@ -40,7 +40,7 @@
       font-size: 1.2rem;
     }
 
-    /* Seção 2: Introdução + 3 boxes (como na imagem de referência) */
+    /* Seção 2: Título/Subtexto à esquerda + 3 boxes à direita */
     .services-intro {
       padding: 60px 20px;
       background-color: var(--white);
@@ -49,13 +49,10 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 1.8fr; /* Coluna esquerda (texto) + coluna direita (3 boxes) */
+      grid-template-columns: 1.2fr 1.8fr;
       gap: 30px;
       align-items: center;
     }
-    /* .services-intro-left {
-      /* Texto à esquerda */
-    /* }  */
     .services-intro-left h2 {
       font-size: 2rem;
       margin-bottom: 15px;
@@ -67,8 +64,6 @@
       line-height: 1.5;
       color: #666;
     }
-
-    /* Contêiner das 3 boxes à direita */
     .services-intro-right {
       display: flex;
       justify-content: space-between;
@@ -90,7 +85,7 @@
       width: 64px;
       height: 64px;
       margin-bottom: 10px;
-      object-fit: contain; /* ou cover, conforme o ícone */
+      object-fit: contain;
     }
     .services-box h3 {
       font-size: 1.2rem;
@@ -203,9 +198,8 @@
       .services-hero p {
         font-size: 1rem;
       }
-      /* Seção 2: vira 1 coluna (texto em cima, boxes empilhadas) */
       .services-intro-grid {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
       }
       .services-intro-right {
         flex-direction: column;
@@ -223,6 +217,13 @@
         align-items: center;
       }
     }
+
+    /* Oculta o botão CTA do header na versão mobile */
+    @media (max-width: 768px) {
+      .btn-cta {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -238,16 +239,14 @@
         <nav class="nav-menu" id="nav-menu">
           <ul>
             <li><a href="index.html">Início</a></li>
-            <li><a href="services.html">Serviços</a></li>
+            <li><a href="services.html" class="active">Serviços</a></li>
             <li><a href="calculadora-renal.html">Calculadora Renal</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contato</a></li>
-            <li><a href="quem-somos.html" class="active">Quem Somos</a></li>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
           </ul>
         </nav>
-        <a href="https://wa.me/5511999999999" target="_blank" class="btn-cta">
-          Agendar consulta
-        </a>
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-cta">Agendar consulta</a>
         <button id="hamburger" type="button" class="hamburger">
           <span></span>
           <span></span>
@@ -265,7 +264,7 @@
     </div>
   </section>
 
-  <!-- SEÇÃO 2: Título/Subtexto à esquerda + 3 boxes à direita -->
+  <!-- SEÇÃO 2: Título/Subtexto + 3 boxes -->
   <section class="services-intro">
     <div class="services-intro-grid">
       <!-- Texto à esquerda -->
@@ -307,7 +306,7 @@
     </div>
   </section>
 
-  <!-- SEÇÃO 3: DEPOIMENTOS / DESTAQUE -->
+  <!-- SEÇÃO 3: DEPOIMENTOS -->
   <section class="services-highlight">
     <div class="highlight-content">
       <h2>Resultados que Transformam Vidas</h2>
@@ -341,7 +340,7 @@
     <a href="contact.html">Agende sua consulta agora</a>
   </section>
 
-  <!-- RODAPÉ -->
+  <!-- RODAPÉ FIXO -->
   <footer class="footer">
     <div class="container footer-content">
       <p>&copy; 2025 NefroClínicas - Todos os direitos reservados.</p>
@@ -353,7 +352,6 @@
     <img src="images/whatsapp_color.png" alt="WhatsApp">
   </a>
 
-  <!-- Script JS Principal -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>
