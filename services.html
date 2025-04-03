@@ -4,8 +4,226 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NefroClínicas - Serviços</title>
+  <!-- Fonte Poppins -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+  <!-- CSS Global -->
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Seção 1: Hero (primeira foto) */
+    .services-hero {
+      background: url('images/service-hero.jpg') center/cover no-repeat;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+    }
+    .services-hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .services-hero .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .services-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .services-hero p {
+      font-size: 1.2rem;
+    }
+
+    /* Seção 2: Introdução + 3 boxes (como na imagem de referência) */
+    .services-intro {
+      padding: 60px 20px;
+      background-color: var(--white);
+    }
+    .services-intro-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1.8fr; /* Coluna esquerda (texto) + coluna direita (3 boxes) */
+      gap: 30px;
+      align-items: center;
+    }
+    .services-intro-left {
+      /* Texto à esquerda */
+    }
+    .services-intro-left h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    .services-intro-left p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    /* Contêiner das 3 boxes à direita */
+    .services-intro-right {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .services-box {
+      background: var(--gray-bg);
+      border-radius: 8px;
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .services-box img.box-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 10px;
+      object-fit: contain; /* ou cover, conforme o ícone */
+    }
+    .services-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    .services-box p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #666;
+    }
+
+    /* Seção 3: Depoimentos (quarta foto) */
+    .services-highlight {
+      background: url('images/service-highlight.jpg') center/cover no-repeat;
+      padding: 80px 20px;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+    }
+    .services-highlight::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .services-highlight .highlight-content {
+      position: relative;
+      z-index: 1;
+    }
+    .services-highlight h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .services-highlight p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+    .testimonial-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .testimonial-item {
+      background: var(--white);
+      color: var(--text-color);
+      border-radius: 8px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .testimonial-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .testimonial-item .name {
+      font-weight: 700;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+    .testimonial-item .stars {
+      color: #f1c40f;
+      margin-bottom: 10px;
+    }
+    .testimonial-item .text {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* Seção 4: CTA Final (quinta foto) */
+    .services-cta {
+      background-color: var(--primary-red);
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--white);
+    }
+    .services-cta h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .services-cta a {
+      display: inline-block;
+      background-color: var(--dark-red);
+      color: var(--white);
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .services-cta a:hover {
+      background-color: #b82a20;
+      transform: translateY(-2px);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .services-hero h1 {
+        font-size: 2rem;
+      }
+      .services-hero p {
+        font-size: 1rem;
+      }
+      /* Seção 2: vira 1 coluna (texto em cima, boxes empilhadas) */
+      .services-intro-grid {
+        grid-template-columns: 1fr; 
+      }
+      .services-intro-right {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .services-highlight h2 {
+        font-size: 2rem;
+      }
+      .services-highlight p {
+        font-size: 1rem;
+      }
+      .testimonial-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -24,9 +242,12 @@
             <li><a href="calculadora-renal.html">Calculadora Renal</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contato</a></li>
+            <li><a href="quem-somos.html" class="active">Quem Somos</a></li>
           </ul>
         </nav>
-        <a href="contact.html" class="btn-cta">Agendar consulta</a>
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-cta">
+          Agendar consulta
+        </a>
         <button id="hamburger" type="button" class="hamburger">
           <span></span>
           <span></span>
@@ -36,14 +257,103 @@
     </div>
   </header>
 
-  <!-- CONTEÚDO DA PÁGINA -->
-  <section class="snap-section">
-    <div class="container">
+  <!-- SEÇÃO 1: HERO -->
+  <section class="services-hero">
+    <div class="hero-content">
       <h1>Nossos Serviços</h1>
-      <p>Descrição dos serviços oferecidos pela NefroClínicas.</p>
+      <p>Conheça as soluções que oferecemos para cuidar da sua saúde renal.</p>
     </div>
   </section>
 
+  <!-- SEÇÃO 2: Título/Subtexto à esquerda + 3 boxes à direita -->
+  <section class="services-intro">
+    <div class="services-intro-grid">
+      <!-- Texto à esquerda -->
+      <div class="services-intro-left">
+        <h2>Somos referência nacional em serviços de saúde renal</h2>
+        <p>
+          A NefroClínicas é conhecida internacionalmente pela sua linha de cuidados completa, 
+          desde a prevenção de doenças renais, a diálise e o pós-transplante. Além do acompanhamento 
+          contínuo com o nefrologista, oferecemos suporte integral da equipe multidisciplinar.
+        </p>
+      </div>
+      <!-- Boxes à direita -->
+      <div class="services-intro-right">
+        <div class="services-box">
+          <img src="images/icon1.png" alt="Ícone 1" class="box-icon">
+          <h3>Conquista Internacional de Saúde</h3>
+          <p>
+            A clínica de nefrologia do Brasil que colocou o paciente no centro 
+            para alcançar resultados reconhecidos internacionalmente.
+          </p>
+        </div>
+        <div class="services-box">
+          <img src="images/icon2.png" alt="Ícone 2" class="box-icon">
+          <h3>Suporte integral ao paciente</h3>
+          <p>
+            Acompanhamento médico e multidisciplinar durante todo o tratamento, 
+            garantindo cuidado personalizado e resultados efetivos.
+          </p>
+        </div>
+        <div class="services-box">
+          <img src="images/icon3.png" alt="Ícone 3" class="box-icon">
+          <h3>Linha de cuidados especializada</h3>
+          <p>
+            Seja na prevenção de doenças renais, diálise ou pós-transplante, 
+            oferecemos uma linha completa de cuidados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3: DEPOIMENTOS / DESTAQUE -->
+  <section class="services-highlight">
+    <div class="highlight-content">
+      <h2>Resultados que Transformam Vidas</h2>
+      <p>Confira depoimentos de nossos pacientes.</p>
+      <div class="testimonial-container">
+        <div class="testimonial-item">
+          <img src="images/testimonial1.jpg" alt="Paciente 1">
+          <div class="name">João Silva</div>
+          <div class="stars">★★★★★</div>
+          <div class="text">"O atendimento foi excelente e a equipe me ajudou a entender meu tratamento de forma clara. Recomendo!"</div>
+        </div>
+        <div class="testimonial-item">
+          <img src="images/testimonial2.jpg" alt="Paciente 2">
+          <div class="name">Maria Oliveira</div>
+          <div class="stars">★★★★☆</div>
+          <div class="text">"Profissionalismo e empatia definem essa clínica. Senti-me muito bem acolhida durante todo o atendimento."</div>
+        </div>
+        <div class="testimonial-item">
+          <img src="images/testimonial3.jpg" alt="Paciente 3">
+          <div class="name">Carlos Souza</div>
+          <div class="stars">★★★★★</div>
+          <div class="text">"Minha saúde renal melhorou significativamente graças ao acompanhamento e tratamento oferecidos aqui."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4: CTA FINAL -->
+  <section class="services-cta">
+    <h2>Pronto para cuidar da sua saúde renal?</h2>
+    <a href="contact.html">Agende sua consulta agora</a>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 NefroClínicas - Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp (apenas mobile) -->
+  <a href="https://wa.me/5511999999999" target="_blank" class="floating-whatsapp">
+    <img src="images/whatsapp_color.png" alt="WhatsApp">
+  </a>
+
+  <!-- Script JS Principal -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>

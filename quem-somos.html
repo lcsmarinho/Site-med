@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quem Somos - NefroClínicas</title>
+  <!-- Importa a fonte Poppins -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Estilos específicos para a página Quem Somos */
+    .quem-somos-page {
+      background-color: var(--gray-bg);
+      padding: 80px 20px;
+    }
+    .quem-somos-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .quem-somos-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    .quem-somos-container p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .profile .name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+    .profile .title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 15px;
+      color: var(--primary-red);
+    }
+    .profile .bio {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+      max-width: 700px;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER: Atualize o menu em todas as páginas para incluir o link "Quem Somos" após "Contato" -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="NefroClínicas">
+        </a>
+      </div>
+      <div class="header-right">
+        <nav class="nav-menu" id="nav-menu">
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="services.html">Serviços</a></li>
+            <li><a href="calculadora-renal.html">Calculadora Renal</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="quem-somos.html" class="active">Quem Somos</a></li>
+          </ul>
+        </nav>
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-cta">
+          Agendar consulta
+        </a>
+        <button id="hamburger" type="button" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO: Quem Somos -->
+  <main class="container quem-somos-page">
+    <div class="quem-somos-container">
+      <h1>Quem Somos</h1>
+      <p>Conheça o profissional que lidera a NefroClínicas e garante a excelência em atendimento.</p>
+      <div class="profile">
+        <img src="images/profile.jpg" alt="Dr. José de Almeida">
+        <div class="name">Dr. José de Almeida</div>
+        <div class="title">Nefrologista & Especialista em Saúde Renal</div>
+        <div class="bio">
+          Com mais de 20 anos de experiência, o Dr. José de Almeida se destaca pela abordagem humanizada e inovadora no tratamento de doenças renais. 
+          Formado pelas melhores instituições, ele lidera uma equipe multidisciplinar comprometida com a saúde e o bem-estar dos pacientes, garantindo um atendimento personalizado e resultados eficazes.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 NefroClínicas - Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp (apenas mobile) -->
+  <a href="https://wa.me/5511999999999" target="_blank" class="floating-whatsapp">
+    <img src="images/whatsapp_color.png" alt="WhatsApp">
+  </a>
+
+  <!-- JS Principal -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
