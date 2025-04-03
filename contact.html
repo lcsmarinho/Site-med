@@ -6,6 +6,191 @@
   <title>Contato - NefroClínicas</title>
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Ajustes exclusivos para a página de Contato */
+
+    /* Main container para ajustar o conteúdo ao espaço no desktop */
+    main.contact-main {
+      /* Deixamos um padding extra no final para evitar que a última box seja encoberta no mobile */
+      min-height: calc(100vh - 70px - 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 20px; /* espaço extra */
+    }
+
+    /* Seção Hero (vermelha) */
+    .contact-hero {
+      background-color: var(--primary-red);
+      width: 100%;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .contact-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .contact-hero p {
+      font-size: 1.2rem;
+    }
+    /* No mobile, arredonda as bordas */
+    @media (max-width: 768px) {
+      .contact-hero {
+        border-radius: 20px;
+        margin: 10px;
+      }
+    }
+
+    /* Seção de Informações e Redes Sociais */
+    .contact-info-section {
+      width: 100%;
+      max-width: 900px;
+      margin: 20px auto 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    .contact-info {
+      text-align: left;
+      flex: 1;
+      min-width: 250px;
+    }
+    .contact-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+    .contact-info p {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #666;
+    }
+    .contact-social {
+      flex: 1;
+      min-width: 250px;
+      text-align: center; 
+    }
+    .contact-social h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+    /* Botões de redes sociais:
+       - No desktop, em linha horizontal
+       - No mobile, em coluna (definido no @media abaixo) */
+    .social-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center; /* centraliza horizontalmente */
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-social {
+      background-color: var(--primary-red);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+      text-align: center;
+    }
+    .btn-social:hover {
+      background-color: var(--dark-red);
+    }
+
+    /* Nova Seção: Informações Sobre a Clínica */
+    .clinic-info-section {
+      width: 100%;
+      background-color: var(--white);
+      padding: 40px 20px;
+      box-sizing: border-box;
+      margin-top: 20px;
+    }
+    .clinic-info-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+    .clinic-box {
+      background: var(--gray-bg);
+      padding: 20px;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .clinic-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+    .clinic-box p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    /* Rodapé fixo */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--white);
+      border-top: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      text-align: center;
+      padding: 20px 0;
+      z-index: 1000;
+    }
+    .footer p {
+      color: #666;
+      margin: 0;
+    }
+
+    /* Responsividade para mobile */
+    @media (max-width: 768px) {
+      /* Evitar que o último box fique coberto pelo footer */
+      .clinic-info-section {
+        margin-bottom: 100px; /* espaço extra abaixo */
+      }
+      .contact-info-section {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .contact-info, .contact-social {
+        margin-bottom: 20px;
+      }
+      /* Botões de redes sociais em coluna no mobile */
+      .social-buttons {
+        flex-direction: column;
+        justify-content: center;
+      }
+      .clinic-info-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -23,8 +208,8 @@
             <li><a href="services.html">Serviços</a></li>
             <li><a href="calculadora-renal.html">Calculadora Renal</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li><a href="quem-somos.html" class="active">Quem Somos</a></li>
+            <li><a href="contact.html" class="active">Contato</a></li>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
           </ul>
         </nav>
         <a href="contact.html" class="btn-cta">Agendar consulta</a>
@@ -38,27 +223,61 @@
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="container">
-    <section class="contact">
-      <h1>Contato</h1>
-      <p>Para agendar uma consulta ou obter mais informações, entre em contato:</p>
+  <main class="container contact-main">
+    <!-- Seção Hero -->
+    <section class="contact-hero">
+      <h1>Entre em Contato</h1>
+      <p>Estamos aqui para ajudar você</p>
+    </section>
+
+    <!-- Seção de Informações e Redes Sociais -->
+    <section class="contact-info-section">
       <div class="contact-info">
+        <h2>Informações de Contato</h2>
         <p><strong>Telefone:</strong> (11) 99999-9999</p>
         <p><strong>Email:</strong> contato@nefroclinicas.com.br</p>
+        <p><strong>Endereço:</strong> Rua Exemplo, 123, São Paulo - SP</p>
       </div>
-      <div class="contact-links">
-        <a href="https://wa.me/5511999999999" target="_blank" class="btn btn-primary">WhatsApp</a>
-        <a href="https://calendly.com/seu-calendario" target="_blank" class="btn btn-secondary">Agendar via Calendly</a>
+      <div class="contact-social">
+        <h2>Redes Sociais</h2>
+        <div class="social-buttons">
+          <a href="#" target="_blank" class="btn-social">Facebook</a>
+          <a href="#" target="_blank" class="btn-social">Instagram</a>
+          <a href="#" target="_blank" class="btn-social">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nova Seção: Informações Sobre a Clínica -->
+    <section class="clinic-info-section">
+      <div class="clinic-info-container">
+        <div class="clinic-box">
+          <h3>Atendimento Humanizado</h3>
+          <p>Nossa equipe está comprometida em oferecer um atendimento próximo e personalizado, colocando o paciente em primeiro lugar.</p>
+        </div>
+        <div class="clinic-box">
+          <h3>Inovação e Tecnologia</h3>
+          <p>Utilizamos as mais modernas tecnologias e métodos para garantir diagnósticos precisos e tratamentos eficazes.</p>
+        </div>
+        <div class="clinic-box">
+          <h3>Equipe Multidisciplinar</h3>
+          <p>Contamos com especialistas de diversas áreas para proporcionar um cuidado integral e de alta qualidade.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- RODAPÉ -->
+  <!-- RODAPÉ FIXO -->
   <footer class="footer">
     <div class="container footer-content">
       <p>&copy; 2025 NefroClínicas - Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <!-- Botão flutuante do WhatsApp (apenas mobile) -->
+  <a href="https://wa.me/5511999999999" target="_blank" class="floating-whatsapp">
+    <img src="images/whatsapp_color.png" alt="WhatsApp">
+  </a>
 
   <script src="assets/js/main.js"></script>
 </body>
