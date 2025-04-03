@@ -15,11 +15,11 @@
 }
 
 /* IMPORTAÇÃO DA FONTE */
-/* Certifique-se de incluir no <head>:
+/* Inclua no head:
    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
 */
 
-/* SCROLL SNAP E CONFIGURAÇÕES GLOBAIS */
+/* CONFIGURAÇÕES GLOBAIS */
 html, body {
   width: 100%;
   height: 100%;
@@ -31,23 +31,6 @@ html, body {
   color: var(--text-color);
 }
 
-/* Cada seção ocupará 95vh, exceto a calculadora (90vh) */
-.snap-section {
-  width: 100%;
-  height: 95vh;
-  scroll-snap-align: start;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Seção da calculadora: 90vh com padding-top para evitar sobreposição */
-.calculator-page {
-  height: 90vh;
-  background: var(--gray-bg);
-  padding: 90px 0 20px;  /* 90px no topo para compensar o header */
-}
-
 /* CONTAINER PADRÃO */
 .container {
   width: 90%;
@@ -55,7 +38,7 @@ html, body {
   margin: 0 auto;
 }
 
-/* ====== HEADER ====== */
+/* ========== HEADER GLOBAL ========== */
 .header {
   width: 100%;
   background-color: var(--white);
@@ -64,16 +47,13 @@ html, body {
   top: 0;
   z-index: 1000;
 }
-
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Logo à esquerda; header-right à direita */
+  justify-content: space-between;
   height: 70px;
   padding: 0 20px;
 }
-
-/* LOGO */
 .logo {
   flex: 0 0 auto;
 }
@@ -81,15 +61,13 @@ html, body {
   height: 40px;
   object-fit: contain;
 }
-
-/* HEADER-RIGHT: agrupa menu e botão CTA */
 .header-right {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* MENU DE NAVEGAÇÃO (DESKTOP) */
+/* MENU DE NAVEGAÇÃO */
 .nav-menu {
   flex: 1;
   text-align: center;
@@ -104,19 +82,17 @@ html, body {
 .nav-menu ul li a {
   text-decoration: none;
   color: var(--text-color);
+  font-size: 1rem;
   font-weight: 500;
   transition: color 0.3s, font-weight 0.3s;
-  font-size: 1rem;
 }
-.nav-menu ul li a:hover {
-  color: var(--primary-red);
-}
+.nav-menu ul li a:hover,
 .nav-menu ul li a.active {
-  color: var(--text-color);
+  color: var(--primary-red);
   font-weight: 600;
 }
 
-/* BOTÃO CTA */
+/* BOTÃO CTA DO HEADER (apenas texto) */
 .btn-cta {
   flex: 0 0 auto;
   text-decoration: none;
@@ -129,12 +105,8 @@ html, body {
   font-size: 0.95rem;
   line-height: 1;
 }
-.btn-cta:hover {
-  background-color: var(--dark-red);
-}
 
-/* MENU MOBILE - por padrão, o menu desktop é utilizado.
-   No mobile, o menu (com id "nav-menu") será alternado com a classe "open" */
+/* MENU MOBILE */
 .nav-menu.open {
   display: block !important;
   position: absolute;
@@ -149,13 +121,11 @@ html, body {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-/* HAMBURGER (MOBILE) */
 .hamburger {
   background: none;
   border: none;
   cursor: pointer;
-  display: none; /* Oculto no desktop */
+  display: none;
   position: relative;
   z-index: 1100;
 }
@@ -179,30 +149,21 @@ html, body {
   }
   .hamburger {
     display: block !important;
-    order: 2;
-  }
-  .btn-cta {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 20px;
-    font-size: 0.85rem;
-  }
-  /* Quando o menu é aberto, os itens são dispostos verticalmente */
-  .nav-menu.open ul {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px 20px;
   }
 }
 
-/* ====== SEÇÃO: CALCULADORA (Seção 1) ====== */
+/* ========== SEÇÃO: CALCULADORA RENAL ========== */
+.calculator-page {
+  height: 90vh;
+  background: var(--gray-bg);
+  padding: 90px 0 20px;
+}
 .calc-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 .calc-info {
   width: 50%;
@@ -211,8 +172,8 @@ html, body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 10px;
-  word-break: break-word; /* Permite quebra de linha */
-  max-width: 90%;       /* Força quebra se necessário */
+  word-break: break-word;
+  max-width: 90%;
 }
 .calc-info p {
   font-size: 1.1rem;
@@ -245,8 +206,6 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
-/* BOTÃO CALCULAR – Estilo “pill” chamativo */
 .btn-calc {
   display: inline-block;
   background-color: var(--primary-red);
@@ -265,7 +224,7 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* ====== MODAL (POP-UP) ====== */
+/* ========== MODAL (POP-UP) ========== */
 .modal {
   display: none;
   position: fixed;
@@ -312,7 +271,7 @@ html, body {
   background-color: var(--dark-red);
 }
 
-/* ====== SEÇÃO: FAQ (Seção 2) ====== */
+/* ========== SEÇÃO: FAQ ========== */
 .faq-section {
   background-color: var(--primary-red);
   padding: 20px 0;
@@ -343,6 +302,7 @@ html, body {
 }
 .faq-item {
   background: var(--white);
+  border: 1px solid rgba(246,59,45,0.3);
   border-radius: 8px;
   margin-bottom: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -394,18 +354,68 @@ html, body {
   transform: rotate(45deg);
 }
 
-/* ====== RODAPÉ ====== */
-.footer {
-  background: var(--white);
-  padding: 20px 0;
-  border-top: 1px solid #eee;
-  text-align: center;
-}
-.footer p {
-  color: #666;
+/* Sentinel para carregar FAQs extras */
+#faq-sentinel {
+  height: 1px;
 }
 
-/* ====== RESPONSIVIDADE ====== */
+/* ========== SEÇÃO: CTA INFERIOR ========== */
+.cta-bottom .cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  text-align: center;
+}
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  background-color: #25D366;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 1rem;
+}
+.btn-whatsapp img {
+  margin-left: 8px;
+  height: 24px;
+}
+.btn-whatsapp:hover {
+  background-color: #1ebc57;
+  transform: translateY(-2px);
+}
+
+/* Botão flutuante WhatsApp */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 10000;
+  display: none; /* Oculto por padrão */
+  align-items: center;
+  justify-content: center;
+}
+.floating-whatsapp img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Só aparece no mobile */
+@media (max-width: 768px) {
+  .floating-whatsapp {
+    display: flex;
+  }
+}
+
+/* ========== RESPONSIVIDADE ========== */
 @media (max-width: 992px) {
   .nav-menu ul {
     gap: 20px;
@@ -445,4 +455,18 @@ html, body {
     gap: 10px;
     padding: 10px 20px;
   }
+}
+.footer {
+  background: var(--white);
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  text-align: center;
+  padding: 20px 0;
+}
+.footer p {
+  color: #666;
+  margin: 0;
 }

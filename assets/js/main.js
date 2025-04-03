@@ -13,26 +13,70 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Lógica do menu hamburger para mobile
+  // Menu hamburger para mobile
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
-  
-  if (!hamburger) {
-    console.warn("Elemento com id 'hamburger' não encontrado.");
-  }
-  if (!navMenu) {
-    console.warn("Elemento com id 'nav-menu' não encontrado.");
-  }
-  
-  if (hamburger && !hamburger.getAttribute('type')) {
-    hamburger.setAttribute('type', 'button');
-  }
-  
   if (hamburger && navMenu) {
     hamburger.addEventListener('click', function(e) {
       e.preventDefault();
       navMenu.classList.toggle('open');
       console.log('Hamburger clicado. Estado atual do nav-menu:', navMenu.className);
     });
+  } else {
+    console.warn("Não foi possível encontrar 'hamburger' ou 'nav-menu'.");
+  }
+
+  // FAQ Accordion (se houver FAQs na página)
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (faqItems.length) {
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      if (question) {
+        question.addEventListener('click', () => {
+          item.classList.toggle('active');
+        });
+      }
+    });
+  }
+
+  // Modal de Resultado (para Calculadora)
+  const modal = document.getElementById('resultModal');
+  const modalClose = document.getElementById('modalClose');
+  if (modal && modalClose) {
+    modalClose.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  }
+
+  // Carregar FAQs extras via IntersectionObserver (se houver)
+  const faqSentinel = document.getElementById('faq-sentinel');
+  const extraFaqs = document.querySelectorAll('.extra-faq');
+  if (faqSentinel && extraFaqs.length) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            extraFaqs.forEach(item => {
+              item.classList.remove('hidden');
+              item.style.opacity = "1";
+              item.style.maxHeight = "300px";
+            });
+            observer.unobserve(faqSentinel);
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(faqSentinel);
+    } else {
+      extraFaqs.forEach(item => {
+        item.classList.remove('hidden');
+        item.style.opacity = "1";
+        item.style.maxHeight = "300px";
+      });
+    }
   }
 });

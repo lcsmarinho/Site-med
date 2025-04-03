@@ -4,21 +4,139 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora Renal - NefroClínicas</title>
-  <!-- Importa a fonte Poppins -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    /* Seção 1: Calculadora Renal (desktop = 600px de altura) */
+    .calculator-page {
+      width: 100%;
+      height: 600px;          /* Altura fixa para desktop */
+      background-color: var(--gray-bg);
+      display: flex;          /* Para centralizar conteúdo verticalmente */
+      align-items: center;    /* Alinhamento vertical */
+    }
+
+    /* Container interno */
+    .calc-content {
+      display: flex;
+      align-items: flex-start; 
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Reduzindo a largura das caixas */
+    .calc-info, .calc-form {
+      width: 450px;
+      max-width: 90%;
+    }
+
+    /* Título/subtítulo sem fundo ou borda extra */
+    .calc-info {
+      background: none;
+      box-shadow: none;
+      border: none;
+      padding: 0;
+    }
+    .calc-info h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .calc-info p {
+      font-size: 1rem;
+      line-height: 1.4;
+      opacity: 0.8;
+    }
+
+    /* Formulário */
+    .calc-form {
+      background-color: var(--white);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .calc-form h2 {
+      margin-bottom: 15px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .btn-calc {
+      display: inline-block;
+      background-color: var(--primary-red);
+      color: var(--white);
+      padding: 12px 30px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: 15px;
+    }
+    .btn-calc:hover {
+      background-color: var(--dark-red);
+      transform: translateY(-2px);
+    }
+
+    /* Seção 2: FAQ (colada na seção de cima) */
+    .faq-section {
+      margin-top: 0; /* Nenhuma margem entre as seções no desktop */
+    }
+
+    /* Responsividade para mobile */
+    @media (max-width: 768px) {
+      .calculator-page {
+        height: auto; /* Altura automática para não cortar conteúdo em telas pequenas */
+        padding: 40px 0; /* Adiciona um pouco de padding */
+        align-items: flex-start; /* Começa de cima */
+      }
+      .calc-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .calc-info, .calc-form {
+        width: 100%;
+        max-width: 500px;
+        margin-bottom: 20px;
+      }
+      .calc-info h1 {
+        font-size: 1.6rem;
+      }
+      .btn-calc {
+        width: 100%;
+      }
+      .faq-section {
+        margin-top: 20px; /* Dá um espacinho para a FAQ no mobile */
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
   <header class="header">
     <div class="container header-content">
-      <!-- Logo à esquerda -->
       <div class="logo">
         <a href="index.html">
           <img src="images/logo.png" alt="NefroClínicas">
         </a>
       </div>
-      <!-- Área à direita: menu e botão CTA; usamos apenas um menu (id="nav-menu") -->
       <div class="header-right">
         <nav class="nav-menu" id="nav-menu">
           <ul>
@@ -29,7 +147,9 @@
             <li><a href="contact.html">Contato</a></li>
           </ul>
         </nav>
-        <a href="contact.html" class="btn-cta">Agendar consulta</a>
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-cta">
+          Agendar consulta
+        </a>
         <button id="hamburger" type="button" class="hamburger">
           <span></span>
           <span></span>
@@ -39,9 +159,9 @@
     </div>
   </header>
 
-  <!-- SEÇÃO 1: CALCULADORA RENAL -->
+  <!-- SEÇÃO 1: CALCULADORA RENAL (2560x600 no desktop) -->
   <section class="snap-section calculator-page">
-    <div class="container calc-content">
+    <div class="calc-content">
       <div class="calc-info">
         <h1>Calculadora de Função Renal</h1>
         <p>Calcule sua função renal gratuitamente e obtenha uma avaliação personalizada.</p>
@@ -76,17 +196,16 @@
     <div class="modal-content">
       <span class="close" id="modalClose">&times;</span>
       <div id="modalResult"></div>
-      <a href="contact.html" class="btn btn-primary">Agendar Consulta</a>
+      <a href="contact.html" class="btn btn-primary">Agendar consulta</a>
     </div>
   </div>
 
-  <!-- SEÇÃO 2: FAQ -->
+  <!-- SEÇÃO 2: FAQ (colada na de cima) -->
   <section class="snap-section faq-section">
     <div class="container faq-container">
       <h2>FAQ - Dúvidas frequentes</h2>
       <p>Reunimos as perguntas mais comuns sobre nossa calculadora renal. Clique em cada pergunta para ver a resposta.</p>
       <div class="faq-list">
-        <!-- FAQ Item 1 -->
         <div class="faq-item">
           <button class="faq-question">
             <span>Quais informações preciso ter para usar a calculadora?</span>
@@ -96,27 +215,44 @@
             <p>Você precisa da sua idade, sexo e do valor da creatinina sérica (mg/dL). Em alguns casos, o peso também pode ser solicitado.</p>
           </div>
         </div>
-        <!-- FAQ Item 2 -->
         <div class="faq-item">
           <button class="faq-question">
             <span>Este cálculo substitui a consulta com o nefrologista?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>Não. A calculadora serve apenas como ferramenta de orientação. Para um diagnóstico preciso, consulte um especialista.</p>
+            <p>Não. A calculadora é apenas uma ferramenta de orientação. Para um diagnóstico preciso, consulte um especialista.</p>
           </div>
         </div>
-        <!-- FAQ Item 3 -->
         <div class="faq-item">
           <button class="faq-question">
             <span>Como interpretar meu resultado?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>Valores abaixo de 60 mL/min podem indicar redução da função renal; entre 60 e 120 mL/min estão na média; e acima de 120 mL/min podem indicar hiperfiltração. Consulte seu médico para uma interpretação detalhada.</p>
+            <p>Valores abaixo de 60 mL/min podem indicar redução da função renal; entre 60 e 120 mL/min estão na média; e acima de 120 mL/min podem indicar hiperfiltração.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Qual é a importância da TFG?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>A TFG é essencial para avaliar a função dos rins e detectar precocemente possíveis disfunções.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Como posso melhorar minha função renal?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Manter uma dieta equilibrada, hidratação adequada e acompanhamento médico regular são fundamentais para preservar a função renal.</p>
           </div>
         </div>
       </div>
+      <div id="faq-sentinel"></div>
     </div>
   </section>
 
@@ -127,9 +263,15 @@
     </div>
   </footer>
 
-  <!-- SCRIPT: Lógica do menu, ativação dos links, cálculo e FAQ Accordion -->
+  <!-- Botão flutuante do WhatsApp (apenas mobile) -->
+  <a href="https://wa.me/5511999999999" target="_blank" class="floating-whatsapp">
+    <img src="images/whatsapp_color.png" alt="WhatsApp">
+  </a>
+
+  <!-- JS Principal -->
+  <script src="assets/js/main.js"></script>
   <script>
-    // Função de cálculo da função renal
+    // Cálculo da Função Renal
     function calculateRenal() {
       const creatinina = parseFloat(document.getElementById('creatinina').value);
       const idade = parseFloat(document.getElementById('idade').value);
@@ -138,7 +280,6 @@
         alert("Por favor, preencha todos os campos corretamente.");
         return;
       }
-      // Fórmula de Cockcroft-Gault com peso fixo = 70kg
       const peso = 70;
       let clearance = ((140 - idade) * peso) / (72 * creatinina);
       if (sexo === 'feminino') clearance *= 0.85;
@@ -147,6 +288,7 @@
       if (clearance < 60) classification = "abaixo da média";
       else if (clearance <= 120) classification = "na média";
       else classification = "acima da média";
+
       document.getElementById('modalResult').innerHTML = `
         <h2>Resultado</h2>
         <p>Sua função renal estimada é <strong>${clearance} mL/min</strong>.</p>
@@ -154,59 +296,6 @@
       `;
       document.getElementById('resultModal').style.display = "block";
     }
-
-    // Modal: fechar quando clicar no "X" ou fora dele
-    document.getElementById('modalClose').addEventListener('click', () => {
-      document.getElementById('resultModal').style.display = "none";
-    });
-    window.addEventListener('click', (event) => {
-      const modal = document.getElementById('resultModal');
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-
-    // FAQ Accordion
-    document.addEventListener('DOMContentLoaded', () => {
-      const faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-          item.classList.toggle('active');
-        });
-      });
-    });
-
-    // Ativação automática dos links com base no URL atual e lógica do menu hamburger
-    document.addEventListener('DOMContentLoaded', function() {
-      // Ativação automática
-      const currentPath = window.location.pathname;
-      const navLinks = document.querySelectorAll('.nav-menu ul li a');
-      navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        if ((currentPath === '/' || currentPath.endsWith('/index.html')) && linkPath === 'index.html') {
-          link.classList.add('active');
-        } else if (currentPath.includes(linkPath) && linkPath !== 'index.html') {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-
-      // Menu hamburger
-      const hamburger = document.getElementById('hamburger');
-      const navMenu = document.getElementById('nav-menu');
-      if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function(e) {
-          e.preventDefault();
-          navMenu.classList.toggle('open');
-          console.log('Hamburger clicado. Estado atual do nav-menu:', navMenu.className);
-        });
-      } else {
-        console.warn("Não foi possível encontrar 'hamburger' ou 'nav-menu'.");
-      }
-    });
   </script>
-  <!-- Opcionalmente, se houver outro arquivo main.js, remova ou integre sua lógica -->
 </body>
 </html>

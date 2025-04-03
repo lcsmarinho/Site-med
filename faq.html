@@ -104,44 +104,36 @@
       height: 1px;
     }
     /* Botão WhatsApp na seção inferior (CTA) - versão PC */
-    .btn-whatsapp {
-      display: inline-flex;
-      align-items: center;
-      background-color: #25D366;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s, transform 0.2s;
-      font-size: 1rem;
-    }
-    .btn-whatsapp img {
-      margin-left: 8px;
-      height: 24px;
-    }
-    .btn-whatsapp:hover {
-      background-color: #1ebc57;
-      transform: translateY(-2px);
-    }
+
+
+
     /* Botão flutuante fixo (WhatsApp) - circular */
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .floating-whatsapp img {
-      width: 24px;
-      height: 24px;
-    }
+ /* Botão flutuante WhatsApp */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 10000;
+  display: none; /* Oculto por padrão */
+  align-items: center;
+  justify-content: center;
+}
+.floating-whatsapp img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Só aparece no mobile */
+@media (max-width: 768px) {
+  .floating-whatsapp {
+    display: flex;
+  }
+}
+
     /* Botão CTA do Header */
     .btn-cta {
       display: inline-flex;
