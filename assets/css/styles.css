@@ -15,7 +15,7 @@
 }
 
 /* IMPORTAÇÃO DA FONTE */
-/* Inclua no head:
+/* Inclua no <head>:
    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
 */
 
@@ -105,6 +105,27 @@ html, body {
   font-size: 0.95rem;
   line-height: 1;
 }
+.btn-cta:hover {
+  background-color: var(--dark-red);
+}
+
+/* RESPONSIVIDADE DO BOTÃO CTA PARA MOBILE */
+@media (max-width: 768px) {
+  .btn-cta {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Ajuste de padding conforme DevTools */
+    padding: 10px 25px;
+    white-space: nowrap;
+    line-height: 1.2;
+    font-size: 0.85rem;
+    border-radius: 30px;
+  }
+  .btn-cta img {
+    display: none;
+  }
+}
 
 /* MENU MOBILE */
 .nav-menu.open {
@@ -125,7 +146,7 @@ html, body {
   background: none;
   border: none;
   cursor: pointer;
-  display: none;
+  display: none; /* Oculto no desktop */
   position: relative;
   z-index: 1100;
 }
@@ -399,7 +420,7 @@ html, body {
   height: 50px;
   border-radius: 50%;
   z-index: 10000;
-  display: none; /* Oculto por padrão */
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -437,13 +458,6 @@ html, body {
   }
   .header-content {
     position: relative;
-  }
-  .btn-cta {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 20px;
-    font-size: 0.85rem;
   }
   .hamburger {
     display: block !important;
